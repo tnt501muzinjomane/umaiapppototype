@@ -20,4 +20,7 @@ color:#027dff;text-shadow: 0 0 2px #fff;
     box-shadow: 3px 3px 0px transparent;
     transition: 0.5s;
     }
+.muzi {
+  height:47px; margin-top: -13px;
+}
 

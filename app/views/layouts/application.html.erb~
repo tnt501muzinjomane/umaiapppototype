@@ -44,7 +44,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="<%= root_path %>"><img src="<%= asset_path('logo.jpg') %>" style="height:47px; margin-top: -13px;"/></a>
+        <a class="navbar-brand" href="<%= root_path %>">RMS</a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
          
           
@@ -96,7 +96,7 @@
       </div><!--/row-->
       <br>
       <footer>
-        <div  class="navbar-inner"  style="color:#000;background-color:#fafafa; text-align:right; font-size:10px;">All Rights Reserved &copy; UMAI <%= Time.now.year %></div>
+        <div  class="navbar-inner"  style="color:#000; text-align:right; font-size:10px;">All Rights Reserved &copy; UMAI <%= Time.now.year %></div>
       </footer>
 
     </div> <!-- /container -->
