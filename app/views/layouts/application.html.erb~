@@ -44,14 +44,14 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="<%= root_path %>">RMS</a>
+        <a class="navbar-brand" href="<%= root_path %>"><img src="<%= asset_path('logo.jpg') %>" class="muzi"/></a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
          
           
          <% if user_signed_in? %>  
           <ul class="nav navbar-nav">
          
-<!---<li><%= link_to welcomes_index_path do %><i class="fa fa-home big"></i> Home<% end %></li>--->
+
 <% if ( current_user && current_user.role == "admin" ) %>
 <li><%= link_to restaurants_path do %><span class="fa fa-utensils big"></span> Restaurants<% end %></li>
 <li><%= link_to rtables_path do %><span class="fa fa-chair big"></span> Tables<% end %></li>
