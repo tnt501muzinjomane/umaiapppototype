@@ -1,0 +1,61 @@
+<%- model_class = Reservation -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped custab">
+  <thead>
+    <tr>
+      
+      <th><%= model_class.human_attribute_name(:guest_id) %></th>
+      <th>Email</th>
+      <th><%= model_class.human_attribute_name(:restaurant_id) %></th>
+      <th><%= model_class.human_attribute_name(:table_id) %></th>
+      <th><%= model_class.human_attribute_name(:shift_id) %></th>
+      <th><%= model_class.human_attribute_name(:reservation_date) %></th>
+      <th><%= model_class.human_attribute_name(:reservation_time) %></th>
+      <th><%= model_class.human_attribute_name(:number_of_people) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @reservations.each do |reservation| %>
+      <tr>
+        
+        <td> <% @users = User.where(:id => reservation.guest_id).each do |e| %>
+         <%= e.name %> <%= e.surname %> 
+         </td>
+        <td><%= e.email %></td>
+        <% end %>
+        <td> <% @restaurants = Restaurant.where(:id => reservation.restaurant_id).each do |e| %>
+         <%= e.name %>
+         <% end %></td>
+        <td><% @tables = Rtable.where(:id => reservation.table_id).each do |e| %>
+         <%= e.name %> Minimum: <%= e.min_guest %> Maximum: <%= e.max_guest %>
+         <% end %></td>
+        <td><% @shifts = Shift.where(:id => reservation.shift_id).each do |e| %>
+         Start: <%= e.start_time %> End: <%= e.end_time %>
+         <% end %></td>
+        <td><%= reservation.reservation_date %></td>
+        <td><%= reservation.reservation_time %></td>
+        <td><%= reservation.number_of_people %></td>
+        <td><%=l reservation.created_at %></td>
+        <td>
+          <%= link_to t('.show', :default => t("helpers.links.show")),
+                      reservation_path(reservation), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_reservation_path(reservation), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      reservation_path(reservation),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_reservation_path,
+            :class => 'btn btn-primary' %>

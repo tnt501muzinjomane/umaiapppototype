@@ -1,0 +1,79 @@
+<%= form_for @reservation, :html => { :class => "form-horizontal reservation" } do |f| %>
+
+  <% if @reservation.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@reservation.errors.count, "error") %> prohibited this reservation from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @reservation.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+   
+    <div class="col-lg-6">
+
+      <%= f.hidden_field :guest_id, required: true, :class => 'form-control', value: current_user.try(:id) %>
+    </div>
+    <%=f.error_span(:guest_id) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :restaurant_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-6">
+      <%= f.collection_select :restaurant_id, Restaurant.all, :id, :name, {prompt: "Select a restaurant"}, {class: "form-control"} %>
+    </div>
+    <%=f.error_span(:restaurant_id) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :table_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-6">
+      <%= f.collection_select :table_id, Rtable.all, :id, :name, {prompt: "Select a table"}, {class: "form-control"} %>
+    </div>
+    <%=f.error_span(:table_id) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :shift_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-6">
+     
+      <%= f.collection_select :shift_id, Shift.all, :id, :start_time, {prompt: "Select a shift"}, {class: "form-control"} %>
+    </div>
+    <%=f.error_span(:shift_id) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :reservation_date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-6">
+      <%= f.date_field :reservation_date, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:reservation_date) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :reservation_time, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-6">
+      <%= f.time_field :reservation_time, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:reservation_time) %>
+  </div>
+
+   <div class="form-group">
+    <%= f.label :number_of_people, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-6">
+      <%= f.number_field :number_of_people, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:reservation_time) %>
+  </div>
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                reservations_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+
+<% end %>

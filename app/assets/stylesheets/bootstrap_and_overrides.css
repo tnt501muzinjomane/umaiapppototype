@@ -1,0 +1,30 @@
+/*
+  =require twitter-bootstrap-static/bootstrap
+
+  Static version of css will use Glyphicons sprites by default
+  =require twitter-bootstrap-static/sprites
+*/
+
+h1 {
+color:#027dff;text-shadow: 0 0 2px #fff;
+}
+
+.custab{
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin: 5% 0;
+    box-shadow: 3px 3px 2px #ccc;
+    transition: 0.5s;
+    }
+.custab:hover{
+    box-shadow: 3px 3px 0px transparent;
+    transition: 0.5s;
+    }
+.navbar-default{
+
+    border-bottom: solid 1px #F8C931; 
+}
+
+default .navbar-nav>li>a{
+color: #ffffff;
+}
