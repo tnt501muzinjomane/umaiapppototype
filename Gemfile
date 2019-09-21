@@ -10,6 +10,9 @@ gem 'mysql2', '>= 0.3.13', '< 0.5', group: :development
  gem 'rails_12factor', group: :production
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+
+
+
 gem 'devise'
 gem 'font_awesome5_rails'
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
