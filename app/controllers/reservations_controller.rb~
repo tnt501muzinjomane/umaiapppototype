@@ -2,10 +2,12 @@ class ReservationsController < ApplicationController
 before_action :authenticate_user!
   before_action :set_reservation, only: [:show, :edit, :update, :destroy]
 
+  
+
   # GET /reservations
   # GET /reservations.json
   def index
-
+  $m = current_user.email
     if current_user && current_user.role == "admin"
     @reservations = Reservation.all
     else 
@@ -35,6 +37,9 @@ before_action :authenticate_user!
 
     respond_to do |format|
       if @reservation.save
+        
+        ReservationMailer.reservation_confirmation.deliver
+
         format.html { redirect_to @reservation, notice: 'Reservation was successfully created.' }
         format.json { render :show, status: :created, location: @reservation }
       else

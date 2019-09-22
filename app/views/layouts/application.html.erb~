@@ -65,7 +65,7 @@
 
 
  <% if user_signed_in? %>
-          <div class="pull-right" style="padding-top:10px;" >
+          <div class="pull-right"  >
                 <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %>
   		<%= link_to destroy_user_session_path, :method => :delete, :class => 'btn btn-danger' do %>
     		<i class="fad fa-sign-out">
@@ -74,7 +74,7 @@
   		<% end %>
 	</div>
          <% else %>
-<div class="pull-right" style="padding-top:10px;" >
+<div class="pull-right"  >
 <%= link_to "Sign up", new_user_registration_path, :class => 'btn btn-info'  %> 
   <%= link_to "Login", new_user_session_path, :class => 'btn btn-success'  %>
 </div>
@@ -96,7 +96,7 @@
       </div><!--/row-->
       <br>
       <footer>
-        <div  class="navbar-inner"  style="color:#000; text-align:right; font-size:10px;">All Rights Reserved &copy; UMAI <%= Time.now.year %></div>
+        <div  class="navbar-inner" id = "foot" >All Rights Reserved &copy; UMAI <%= Time.now.year %></div>
       </footer>
 
     </div> <!-- /container -->
